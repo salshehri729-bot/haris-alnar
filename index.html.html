@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>حارس النار | إنذار عالمي للحرائق</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+  <style>
+    :root{--ink:#102c35;--teal:#0a6f69;--mint:#dff5ef;--sand:#fff8ed;--orange:#ef6b32;--red:#c94232;--yellow:#f2b544;--line:#d7e4df;--muted:#627673}*{box-sizing:border-box}body{margin:0;background:#f7fbfa;color:var(--ink);font-family:Cairo,Arial,sans-serif}header{background:linear-gradient(115deg,#063b42,#0b776b);color:white;padding:20px 7vw 55px}.top{display:flex;justify-content:space-between;align-items:center;gap:10px}.brand{font-size:25px;font-weight:800}.brand span{color:#ffc15a}.status{border:1px solid #ffffff3d;background:#ffffff16;border-radius:99px;padding:7px 14px;font-size:12px}.hero{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-top:28px}.hero h1{font-size:34px;margin:0 0 8px}.hero p{margin:0;max-width:760px;opacity:.9}.hero small{color:#d1fff0}main{max-width:1300px;margin:-30px auto 44px;padding:0 20px}.grid{display:grid;grid-template-columns:1.6fr 1fr;gap:20px}.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 8px 24px #1d4d4520}.card h2{font-size:18px;margin:0 0 13px}.map-wrap{position:relative}.map{height:510px;border-radius:12px;overflow:hidden;background:#e4f0e9}.map-note{position:absolute;bottom:12px;right:12px;z-index:500;background:#ffffffea;padding:7px 11px;border-radius:8px;font-size:12px;color:var(--muted)}.search{display:flex;gap:8px;margin-bottom:12px}.search input{flex:1;border:1px solid var(--line);border-radius:10px;padding:10px 13px;font:inherit}.search button,.primary,.secondary{border:0;background:var(--teal);color:#fff;border-radius:10px;padding:10px 15px;font:inherit;font-weight:800;cursor:pointer}.secondary{background:#e5f4ef;color:var(--teal);white-space:nowrap}.primary{width:100%;margin-top:17px}.loc{font-size:17px;font-weight:800;margin:4px 0 15px}.coords{font-size:12px;color:var(--muted);direction:ltr;text-align:right}.risk{display:flex;gap:18px;align-items:center}.gauge{width:132px;height:132px;border-radius:50%;background:conic-gradient(var(--yellow) 0 0%,#e8efec 0);display:grid;place-items:center;transition:.35s}.gauge>div{width:98px;height:98px;border-radius:50%;background:#fff;display:grid;place-items:center;text-align:center;line-height:1.35;font-size:13px;font-weight:800}.gauge strong{display:block;font-size:29px}.metrics{margin-top:19px}.metric{display:flex;justify-content:space-between;font-size:13px;margin-top:10px}.bar{height:8px;background:#eaf0ee;border-radius:9px;overflow:hidden;margin-top:5px}.bar b{display:block;height:100%;border-radius:9px;background:var(--orange);transition:.35s}.weather{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}.weather div{background:#f2f8f6;border-radius:10px;padding:11px;font-size:12px}.weather b{display:block;font-size:17px;color:var(--teal);margin-top:2px}.history{margin-top:14px;background:#eef8f5;border-radius:10px;padding:12px}.history b{display:block;font-size:23px;color:var(--teal);margin-top:2px}.report{margin-top:20px;background:var(--sand);border-right:4px solid var(--orange);padding:14px;border-radius:7px;line-height:1.9;font-size:13px}.report strong{color:#9a3d18}.advice{margin-top:10px;padding:12px 14px;border-radius:8px;line-height:1.8;font-size:13px;background:#eff8f5;border-right:4px solid var(--teal)}.advice.high{background:#fff0ed;border-right-color:var(--red)}.agent{margin-top:20px}.agent-row{display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid #edf2f0}.agent-row:last-child{border:0}.icon{width:34px;height:34px;border-radius:10px;background:var(--mint);display:grid;place-items:center}.tag{font-size:11px;color:#17613b;background:#e8f5ed;border-radius:18px;padding:4px 8px}.tag.warn{color:#8b5300;background:#fff1de}.notice{font-size:12px;color:var(--muted);margin-top:15px;line-height:1.8}.leaflet-container{font-family:Cairo,Arial,sans-serif}.leaflet-popup-content{font-family:Cairo,Arial,sans-serif;font-size:13px}.steps{display:flex;gap:6px;margin-bottom:16px}.step{flex:1;text-align:center;padding:8px 3px;border-radius:10px;background:#f2f8f6;color:var(--muted);transition:.3s}.step .step-icon{display:block;font-size:15px;line-height:1}.step .step-label{display:block;font-size:10px;margin-top:3px;font-weight:800}.step.active{background:var(--teal);color:#fff;transform:scale(1.05)}.step.done{background:#dcf1ea;color:#0d5c53}.step.error{background:#fde6e1;color:#8a2c1f}.tag.err{color:#8a2c1f;background:#fde6e1}.sim-box{margin-top:18px;background:#fff8ed;border:1px dashed #ef6b3266;border-radius:12px;padding:14px}.sim-box>b{display:block;font-size:13px;margin-bottom:10px;color:#9a3d18}.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}.chip{border:1px solid var(--line);background:#fff;border-radius:20px;padding:6px 13px;font-size:12px;font-weight:700;cursor:pointer;color:var(--ink)}.chip:hover{border-color:var(--teal)}.chip.active{background:var(--teal);color:#fff;border-color:var(--teal)}.sim-controls{display:flex;gap:8px;align-items:center}.sim-controls input{flex:1;min-width:0;border:1px solid var(--line);border-radius:9px;padding:9px 11px;font:inherit}.sim-controls button{white-space:nowrap;padding:9px 12px;font-size:12px}.sim-note{display:block;margin-top:10px;font-size:11.5px;color:var(--muted);line-height:1.7}.forecast{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}.fday{background:#f2f8f6;border-radius:10px;padding:9px 6px;text-align:center}.fday b{display:block;font-size:11px;color:var(--muted);margin-bottom:4px}.fday .t{display:block;font-weight:800;color:var(--teal);font-size:14px;margin-bottom:3px}.fday span.s{display:block;font-size:10px;color:var(--muted)}.toast{position:fixed;bottom:20px;left:20px;padding:12px 16px;background:#103b36;color:#fff;border-radius:10px;display:none;z-index:9999}.toast.show{display:block}@media(max-width:850px){.grid{grid-template-columns:1fr}.hero{display:block}.hero small{display:block;margin-top:12px}.map{height:390px}.status{display:none}}@media(max-width:460px){main{padding:0 12px}.card{padding:15px}.weather{grid-template-columns:1fr 1fr}.hero h1{font-size:27px}.search{flex-wrap:wrap}.search input{min-width:100%}}
+  </style>
+</head>
+<body>
+  <header><div class="top"><div class="brand">حارس <span>النار</span> 🔥</div><div class="status" id="connection">● جارٍ الاتصال ببيانات الطقس</div></div><div class="hero"><div><h1>خريطة عالمية لتقييم مخاطر الحرائق</h1><p>اضغط في أي مكان على الخريطة أو ابحث عن مدينة؛ يحلل الوكيل الطقس الحالي والتنبؤ القريب ليصدر توصية أولية قابلة للمراجعة.</p></div><small>مصدر الطقس: Open‑Meteo — يعمل دون مفتاح API</small></div></header>
+  <main><section class="grid"><div class="card"><h2>اختر أي موقع في العالم</h2><div class="search"><input id="city" placeholder="ابحث: جدة، مكة، Los Angeles، Sydney…"><button id="searchBtn">بحث</button><button id="locateBtn" class="secondary">📍 موقعي</button></div><div class="map-wrap"><div id="map" class="map"></div><div class="map-note">اضغط على الخريطة لاختيار الموقع</div></div></div>
+    <aside class="card"><h2>تحليل خطر الحريق</h2><div class="loc" id="locationName">جدة — السعودية</div><div class="coords" id="coords">21.4858, 39.1925</div><div class="steps" id="steps"><div class="step" data-step="loc"><span class="step-icon">📍</span><span class="step-label">الموقع</span></div><div class="step" data-step="weather"><span class="step-icon">🌦️</span><span class="step-label">الطقس</span></div><div class="step" data-step="history"><span class="step-icon">🔥</span><span class="step-label">السجل</span></div><div class="step" data-step="risk"><span class="step-icon">🧠</span><span class="step-label">التقييم</span></div></div><div class="risk"><div class="gauge" id="gauge"><div><strong id="score">—</strong><span id="level">جارٍ التحليل</span></div></div><div><b id="summary">في انتظار بيانات الطقس</b><p class="notice" id="updated">اضغط على الخريطة لتحديث التحليل.</p></div></div><div class="weather"><div>الحرارة الحالية<b id="temperature">—</b></div><div>الرياح الحالية<b id="wind">—</b></div><div>الرطوبة<b id="humidity">—</b></div><div>أمطار متوقعة<b id="rain">—</b></div></div><div class="forecast" id="forecast"></div><div class="history">سجل الحرائق القريب (تقريبي)<b id="fireHistory">جارٍ البحث…</b><small id="fireHistoryNote">أحداث NASA EONET ضمن 100 كم تقريبًا خلال آخر 365 يومًا.</small></div><div class="metrics"><div class="metric"><span>الحرارة والجفاف</span><b id="heatValue">—</b></div><div class="bar"><b id="heatBar"></b></div><div class="metric"><span>الرياح</span><b id="windValue">—</b></div><div class="bar"><b id="windBar"></b></div><div class="metric"><span>عامل الرطوبة</span><b id="dryValue">—</b></div><div class="bar"><b id="dryBar"></b></div></div><button id="refresh" class="primary">تحديث تحليل هذا الموقع</button><div class="sim-box"><b>🧪 وضع المحاكاة (لعرض تجريبي كما في الفيديو)</b><div class="chips" id="quickChips"><button class="chip" data-city="تنومة">تنومة</button><button class="chip" data-city="أبها">أبها</button><button class="chip" data-city="محايل">محايل</button><button class="chip" data-city="خميس مشيط">خميس مشيط</button></div><div class="sim-controls"><input id="windSim" type="number" min="0" max="150" step="1" placeholder="محاكاة سرعة الرياح، مثال: 42"><button id="applySim" class="secondary">تطبيق</button><button id="clearSim" class="secondary">رجوع للبيانات الحية</button></div><small class="sim-note" id="simStatus">البيانات حاليًا حية بالكامل من Open‑Meteo.</small></div></aside></section>
+  <section class="grid agent"><div class="card"><h2>سير عمل الوكيل</h2><div class="agent-row"><div class="icon">📍</div><div><b>وكيل الموقع</b><br><small>يقرأ النقطة أو اسم المدينة ويحدد الإحداثيات.</small></div><span class="tag">عالمي</span></div><div class="agent-row"><div class="icon">🌦️</div><div><b>وكيل الطقس</b><br><small>يجلب الطقس الحالي والتنبؤ بالمطر والرياح.</small></div><span class="tag" id="weatherStatus">جاهز</span></div><div class="agent-row"><div class="icon">🔥</div><div><b>وكيل سجل الحرائق</b><br><small>يبحث عن أحداث حرائق NASA المسجلة قرب الموقع.</small></div><span class="tag" id="historyStatus">جاهز</span></div><div class="agent-row"><div class="icon">🧠</div><div><b>وكيل تقييم الخطر</b><br><small>يحسب مؤشرًا أوليًا وفق الحرارة والرياح والجفاف.</small></div><span class="tag warn" id="riskTag">بانتظار التحليل</span></div></div><div class="card"><h2>توصية الوكيل</h2><div class="report" id="report"><strong>اختر موقعًا على الخريطة</strong><br>سيعرض النظام بيانات الطقس الحية والتوصية الأولية لهذا الموقع.</div><div class="advice" id="advice">نصيحة: تجنب ترك أي مصدر حرارة دون مراقبة، واتصل بالدفاع المدني عند رؤية دخان أو لهب.</div><p class="notice">تنبيه مهم: عدد الحرائق هو عدد أحداث EONET المسجلة في نطاق تقريبي، وقد لا يغطي كل الحرائق المحلية. هذا نموذج تعليمي؛ أي تنبيه تشغيلي يحتاج نقاط NASA FIRMS ومراجعة بشرية.</p></div></section></main><div class="toast" id="toast"></div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
+    const $=s=>document.querySelector(s);let selected={lat:21.4858,lon:39.1925,name:'جدة — السعودية'},marker,windOverride=null,simCity=null;
+    // بيانات سيناريو ثابتة تطابق نص الفيديو تمامًا (لا تتأثر بتقلب الطقس الحي وقت التصوير)
+    const SIM_DATA={'تنومة':{score:72,wind:31,action:'رفع جاهزية فرقة الدفاع المدني القريبة من تنومة، وتنبيه المقيمين لتجنب إشعال النار في الأماكن المفتوحة حتى الساعة 22:00.',why:'رياح نشطة + جفاف مرتفع + نمط حرائق متكرر.'},'أبها':{score:48,wind:18,action:'تكثيف المراقبة الميدانية في الغطاء النباتي الجاف وتذكير المتنزهين بتعليمات السلامة.',why:'مؤشرات جفاف متوسطة ووجود رياح خفيفة.'},'محايل':{score:59,wind:31,action:'تجهيز نقطة استجابة متنقلة ومتابعة أي نقطة حرارة جديدة خلال الساعات القادمة.',why:'ارتفاع نسبي في الرياح وتاريخ حرائق محلي.'},'خميس مشيط':{score:28,wind:18,action:'استمرار المتابعة الروتينية ونشر رسالة توعوية وقائية.',why:'طقس مستقر ورطوبة أفضل.'}};
+    const map=L.map('map',{worldCopyJump:true}).setView([21.4858,39.1925],5);L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap contributors'}).addTo(map);
+    const clamp=(n,min,max)=>Math.max(min,Math.min(max,n));const fmt=n=>Number(n).toLocaleString('ar-SA',{maximumFractionDigits:1});
+    function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800)}
+    function riskLabel(score){return score>=70?['مرتفعة','var(--red)']:score>=42?['متوسطة','var(--orange)']:['منخفضة','var(--yellow)']}
+    function setMarker(){if(marker)map.removeLayer(marker);marker=L.marker([selected.lat,selected.lon]).addTo(map).bindPopup(`<b>${selected.name}</b><br>تحليل مخاطر الحريق`).openPopup()}
+    function riskText(score,temp,wind,humidity,rain){if(score>=70)return `رفع الجاهزية ومتابعة الموقع خلال الساعات القادمة. الحرارة ${fmt(temp)}° والرياح ${fmt(wind)} كم/س مع رطوبة ${fmt(humidity)}% ترفع قابلية الانتشار.`;if(score>=42)return `المتابعة الوقائية مناسبة. يوصى بتذكير الموجودين بتعليمات السلامة ومراقبة تغير الرياح.`;return `المؤشر الطقسي منخفض حاليًا. استمر في المتابعة الروتينية؛ قد تتغير النتيجة مع تغير الطقس.`}
+    function safetyAdvice(score){if(score>=70)return ['تنبيه خطر مرتفع: تجنب إشعال النار أو الشواء أو حرق المخلفات في الأماكن المفتوحة. ابتعد عن الأعشاب الجافة، وأبلغ الدفاع المدني فورًا عند رؤية دخان أو لهب.','high'];if(score>=42)return ['تنبيه وقائي: تجنب إشعال النار دون ضرورة، ولا تترك الشواء أو مصادر الحرارة دون مراقبة. تأكد من وجود ماء أو طفاية قريبة.',''];return ['نصيحة السلامة: اتبع تعليمات الموقع، أطفئ الفحم والنار بالماء تمامًا قبل المغادرة، ولا ترمِ أعقاب السجائر في المناطق النباتية.','']}
+    // --- وكيل سير العمل: مؤشر بصري لمراحل التحليل ---
+    function setStep(key,state){const el=document.querySelector(`.step[data-step="${key}"]`);if(!el)return;el.classList.remove('active','done','error');if(state&&state!=='reset')el.classList.add(state)}
+    function resetSteps(){document.querySelectorAll('.step').forEach(el=>el.classList.remove('active','done','error'))}
+    function setTag(id,text,kind){const el=$('#'+id);el.textContent=text;el.className=kind==='warn'?'tag warn':kind==='err'?'tag err':'tag'}
+    // --- حساب المسافة بين نقطتين (كم) لتصفية أحداث الحرائق فعليًا حسب القرب من الموقع ---
+    function haversineKm(lat1,lon1,lat2,lon2){const R=6371,toRad=d=>d*Math.PI/180;const dLat=toRad(lat2-lat1),dLon=toRad(lon2-lon1);const a=Math.sin(dLat/2)**2+Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dLon/2)**2;return 2*R*Math.asin(Math.sqrt(a))}
+    const FIRE_RADIUS_KM=100;
+    async function fireHistory(lat,lon){
+      setStep('history','active');setTag('historyStatus','جارٍ البحث','warn');
+      const delta=3,bbox=`${lon-delta},${lat-delta},${lon+delta},${lat+delta}`;
+      try{
+        const u=`https://eonet.gsfc.nasa.gov/api/v3/events?category=wildfires&status=all&days=365&limit=1000&bbox=${encodeURIComponent(bbox)}`;
+        const r=await fetch(u);if(!r.ok)throw new Error('EONET unavailable');
+        const d=await r.json();
+        // تصفية فعلية بالمسافة: بعض استجابات الخادم قد لا تُطبّق bbox بدقة، لذا نتحقق من كل حدث بأنفسنا
+        const nearby=(d.events||[]).filter(ev=>{
+          const pts=(ev.geometry||[]).map(g=>g&&g.coordinates).filter(Boolean);
+          return pts.some(c=>haversineKm(lat,lon,c[1],c[0])<=FIRE_RADIUS_KM);
+        });
+        $('#fireHistory').textContent=`${fmt(nearby.length)} حدث مسجل`;
+        $('#fireHistoryNote').textContent=`أحداث حرائق NASA EONET ضمن ${FIRE_RADIUS_KM} كم تقريبًا من هذا الموقع خلال آخر 365 يومًا.`;
+        setTag('historyStatus','تم التحديث','ok');setStep('history','done');
+        return nearby.length;
+      }catch(e){
+        $('#fireHistory').textContent='غير متاح حاليًا';
+        $('#fireHistoryNote').textContent='تعذر الاتصال بسجل NASA EONET؛ لا يعني ذلك عدم وجود حرائق.';
+        setTag('historyStatus','تعذر التحديث','err');setStep('history','error');
+        return null;
+      }
+    }
+    function arabicWeekday(dateStr){const days=['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];return days[new Date(dateStr+'T00:00:00').getDay()]}
+    function buildForecast(daily){
+      if(!daily||!daily.time)return;
+      const n=Math.min(3,daily.time.length);let html='';
+      for(let i=0;i<n;i++){
+        const label=i===0?'اليوم':i===1?'غدًا':arabicWeekday(daily.time[i]);
+        const tmax=fmt(daily.temperature_2m_max[i]),tmin=fmt(daily.temperature_2m_min[i]);
+        const wind=fmt(daily.wind_speed_10m_max[i]),rain=fmt(daily.precipitation_sum[i]);
+        html+=`<div class="fday"><b>${label}</b><span class="t">${tmax}°/${tmin}°</span><span class="s">💨 ${wind} كم/س</span><span class="s">🌧️ ${rain} مم</span></div>`;
+      }
+      $('#forecast').innerHTML=html;
+    }
+    async function analyse(){
+      const {lat,lon,name}=selected;
+      resetSteps();setStep('loc','done');
+      $('#connection').textContent='● جارٍ جلب بيانات الطقس';setTag('weatherStatus','جارٍ التحديث','warn');setStep('weather','active');
+      $('#summary').textContent='جارٍ تحليل الطقس…';
+      fireHistory(lat,lon);
+      try{
+        const u=new URL('https://api.open-meteo.com/v1/forecast');
+        u.search=new URLSearchParams({latitude:lat,longitude:lon,current:'temperature_2m,relative_humidity_2m,wind_speed_10m,precipitation',daily:'precipitation_sum,wind_speed_10m_max,temperature_2m_max,temperature_2m_min',forecast_days:3,timezone:'auto',wind_speed_unit:'kmh'});
+        const r=await fetch(u);if(!r.ok)throw new Error('Weather API unavailable');
+        const d=await r.json(),c=d.current,day=d.daily;
+        const temp=c.temperature_2m,humidity=c.relative_humidity_2m,liveWind=Math.max(c.wind_speed_10m,day.wind_speed_10m_max?.[0]||0),rain=(c.precipitation||0)+(day.precipitation_sum?.[0]||0);
+        const simActive=windOverride!==null&&!isNaN(windOverride);
+        const demo=simCity&&SIM_DATA[simCity]?SIM_DATA[simCity]:null;
+        const wind=simActive?windOverride:(demo?demo.wind:liveWind);
+        setStep('weather','done');setTag('weatherStatus','تم التحديث','ok');
+        setStep('risk','active');
+        const heat=clamp((temp-18)*1.5,0,34),windRisk=clamp(wind*.9,0,28),dry=clamp((100-humidity)*.28,0,28),rainRelief=clamp(rain*5,0,25);
+        let score,reportHTML;
+        if(demo){
+          score=Math.round(clamp(demo.score+(wind-demo.wind),15,95));
+          reportHTML=`<strong>أولوية: ${riskLabel(score)[0]}</strong><br>يوصي النظام بـ ${demo.action}<br><span style="color:#6d5747">السبب: ${demo.why}</span>`;
+        }else{
+          score=Math.round(clamp(12+heat+windRisk+dry-rainRelief,5,95));
+          reportHTML=`<strong>أولوية: ${riskLabel(score)[0]}</strong><br>${riskText(score,temp,wind,humidity,rain)}`;
+        }
+        const [level,color]=riskLabel(score),[advice,adviceClass]=safetyAdvice(score);
+        $('#locationName').textContent=name;$('#coords').textContent=`${lat.toFixed(4)}, ${lon.toFixed(4)}`;
+        $('#score').textContent=score;$('#level').textContent=`خطر ${level}`;
+        $('#gauge').style.background=`conic-gradient(${color} 0 ${score}%,#e8efec ${score}% 100%)`;
+        $('#summary').textContent=`مؤشر ${level} — ${demo?'سيناريو العرض التوضيحي':'تحليل طقسي أولي'}`;
+        $('#temperature').textContent=`${fmt(temp)} °م`;$('#wind').textContent=`${fmt(wind)} كم/س${simActive||demo?' (محاكاة)':''}`;$('#humidity').textContent=`${fmt(humidity)}%`;$('#rain').textContent=`${fmt(rain)} مم`;
+        $('#simStatus').textContent=demo?`🎬 وضع العرض التوضيحي نشط — الدرجة والتوصية ثابتة تطابق نص الفيديو (أساسها ${fmt(demo.score)} عند رياح ${fmt(demo.wind)} كم/س)، بينما الحرارة والرطوبة والأمطار وسجل الحرائق المعروضة حية فعليًا لهذا الموقع.`:simActive?`🧪 وضع محاكاة نشط — الرياح مضبوطة يدويًا على ${fmt(wind)} كم/س، وباقي القيم (حرارة/رطوبة/أمطار/سجل حرائق) حية فعلية.`:'البيانات حاليًا حية بالكامل من Open‑Meteo.';
+        $('#heatValue').textContent=`${fmt(heat)}/34`;$('#windValue').textContent=`${fmt(windRisk)}/28`;$('#dryValue').textContent=`${fmt(dry)}/28`;
+        $('#heatBar').style.width=`${heat/34*100}%`;$('#windBar').style.width=`${windRisk/28*100}%`;$('#dryBar').style.width=`${dry/28*100}%`;
+        $('#report').innerHTML=reportHTML;
+        $('#advice').textContent=advice;$('#advice').className=`advice ${adviceClass}`;
+        $('#updated').textContent=`آخر تحديث: ${new Date().toLocaleString('ar-SA')} — بيانات Open‑Meteo`;
+        $('#connection').textContent='● بيانات الطقس متصلة';
+        $('#riskTag').textContent=`خطر ${level}`;$('#riskTag').className=level==='مرتفعة'?'tag err':level==='متوسطة'?'tag warn':'tag';
+        buildForecast(day);
+        setMarker();
+        setStep('risk','done');
+      }catch(e){
+        console.error(e);
+        setStep('weather','error');setTag('weatherStatus','تعذر التحديث','err');
+        $('#connection').textContent='● تعذر الاتصال بالطقس';
+        $('#summary').textContent='تعذر جلب بيانات الطقس';
+        $('#report').innerHTML='<strong>تعذر الاتصال بمصدر الطقس</strong><br>تحقق من اتصال الإنترنت ثم حاول مجددًا.';
+        toast('تعذر جلب بيانات الطقس.');
+      }
+    }
+    function clearSimUI(){windOverride=null;simCity=null;$('#windSim').value='';document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'))}
+    map.on('click',e=>{clearSimUI();selected={lat:e.latlng.lat,lon:e.latlng.lng,name:`موقع مختار على الخريطة`};analyse()});
+    document.querySelectorAll('.chip').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const city=btn.dataset.city,loc=saudiPlaces[city];if(!loc||!SIM_DATA[city])return;
+        simCity=city;windOverride=null;$('#windSim').value=SIM_DATA[city].wind;
+        document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));btn.classList.add('active');
+        selected=loc;map.setView([loc.lat,loc.lon],10);analyse();
+      });
+    });
+    $('#applySim').onclick=()=>{
+      const v=parseFloat($('#windSim').value);
+      if(isNaN(v)||v<0){toast('أدخل سرعة رياح صحيحة (رقم موجب).');return}
+      windOverride=v;analyse();
+    };
+    $('#clearSim').onclick=()=>{clearSimUI();analyse()};
+    const saudiPlaces={'مكة':{lat:21.3891,lon:39.8579,name:'مكة المكرمة — السعودية'},'مكة المكرمة':{lat:21.3891,lon:39.8579,name:'مكة المكرمة — السعودية'},'جدة':{lat:21.4858,lon:39.1925,name:'جدة — السعودية'},'المدينة':{lat:24.5247,lon:39.5692,name:'المدينة المنورة — السعودية'},'المدينة المنورة':{lat:24.5247,lon:39.5692,name:'المدينة المنورة — السعودية'},'الطائف':{lat:21.2703,lon:40.4158,name:'الطائف — السعودية'},'ينبع':{lat:24.0895,lon:38.0618,name:'ينبع — السعودية'},'تبوك':{lat:28.3838,lon:36.5550,name:'تبوك — السعودية'},'أبها':{lat:18.2164,lon:42.5053,name:'أبها — السعودية'},'تنومة':{lat:19.0687,lon:42.1426,name:'تنومة — السعودية'},'محايل':{lat:18.5583,lon:42.0433,name:'محايل عسير — السعودية'},'خميس مشيط':{lat:18.3000,lon:42.7333,name:'خميس مشيط — السعودية'}};
+    async function search(){const q=$('#city').value.trim();if(!q)return toast('اكتب اسم مدينة أو منطقة أولًا.');$('#searchBtn').textContent='جارٍ البحث…';clearSimUI();try{const local=saudiPlaces[q];if(local){selected=local;map.setView([local.lat,local.lon],9);await analyse();return}const r=await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(q)}&count=1&language=ar&format=json`),d=await r.json(),x=d.results?.[0];if(!x)throw new Error('not found');selected={lat:x.latitude,lon:x.longitude,name:[x.name,x.admin1,x.country].filter(Boolean).join(' — ')};map.setView([x.latitude,x.longitude],8);analyse()}catch(e){toast('لم نعثر على المدينة. جرّب الاسم بالإنجليزية.')}finally{$('#searchBtn').textContent='بحث'}}
+    function locateMe(){if(!navigator.geolocation)return toast('المتصفح لا يدعم تحديد الموقع.');$('#locateBtn').textContent='جارٍ التحديد…';clearSimUI();navigator.geolocation.getCurrentPosition(p=>{selected={lat:p.coords.latitude,lon:p.coords.longitude,name:'موقعي الحالي'};map.setView([selected.lat,selected.lon],10);analyse();$('#locateBtn').textContent='📍 موقعي'},()=>{toast('لم نتمكن من معرفة موقعك. اسمح للموقع باستخدام الموقع ثم حاول مجددًا.');$('#locateBtn').textContent='📍 موقعي'},{enableHighAccuracy:false,timeout:10000,maximumAge:300000})}
+    $('#searchBtn').onclick=search;$('#city').addEventListener('keydown',e=>{if(e.key==='Enter')search()});$('#refresh').onclick=analyse;$('#locateBtn').onclick=locateMe;analyse();
+  </script>
+</body></html>
