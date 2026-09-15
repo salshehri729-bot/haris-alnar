@@ -13,8 +13,8 @@
 
 ### 🎬 المعاينة والتجربة الميدانية
 
-[![مشاهدة الفيديو التوضيحي](https://img.shields.io/badge/▶_مشاهدة_فيديو_العرض_التوضيحي-Fire_Guard-red?style=for-the-badge&logo=youtube&logoColor=white)](https://github.com/salshehri729-bot/haris-alnar/raw/main/fire-guard-demo.mp4)
+[![مشاهدة الفيديو التوضيحي](https://img.shields.io/badge/▶_مشاهدة_فيديو_العرض_التوضيحي-Fire_Guard-red?style=for-the-badge&logo=youtube&logoColor=white)](https://github.com/salshehri729-bot/haris-alnar/blob/main/fire-guard-demo.mp4)
 
-*(اضغطي على الزر أعلاه لمشاهدة فيديو العرض بدقة عالية)*
+*(اضغطي على الزر أعلاه لمشاهدة فيديو العرض)*
 
 </div>
