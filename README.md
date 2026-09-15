@@ -11,5 +11,5 @@
 البيانات في النموذج محاكاة آمنة للعرض. في الإنتاج يمكن ربطها بـ NASA FIRMS وOpenWeather وخرائط Google أو Mapbox وقاعدة PostgreSQL.
 <div align="center">
   <h2>فيديو توضيحي لمشروع حارس النار</h2>
-  <video src="fire-guard-demo.mp4" width="100%" controls></video>
+  <video src="https://github.com/salshehri729-bot/haris-alnar/raw/main/fire-guard-demo.mp4" width="100%" controls></video>
 </div>
